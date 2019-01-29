@@ -1,0 +1,26 @@
+def generate_columns(lst):
+    result = []
+    for i in range(len(lst[0])):
+        column = []
+        for j in lst:
+            column.append(j[i])
+        result.append(column)
+    return result
+
+
+def generate_empty_result(l):
+    empty_result = []
+    for i in range(l):
+        empty_result.append(l * [0])
+    return empty_result
+
+
+def matrix_mult(a, b):
+    result = generate_empty_result(len(a))
+    b = generate_columns(b)
+
+    for i in range(len(a)):
+        for j in range(len(a)):
+            for k in range(len(a)):
+                result[i][j] += a[i][k] * b[j][k]
+    return result
