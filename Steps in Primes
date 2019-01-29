@@ -1,0 +1,18 @@
+import random
+
+
+def is_prime(num):
+    for j in range(20):
+        a = random.randint(1, num - 1)
+        if pow(a, (num - 1), num) != 1:
+            return False
+    return True
+
+
+def step(g, m, n):
+    lst = []
+    for i in range(m, n + 1):
+        if is_prime(i) == True:
+            lst.append(i)
+            if i - g in lst:
+                return sorted([i, i - g])
