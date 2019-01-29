@@ -1,0 +1,14 @@
+from fractions import gcd
+
+def lcm(lista):
+    x = lista[0]
+    for i in lista[1:]:
+        x = x * i / gcd(int(x), i)
+    return int(x)
+
+def convertFracts(lst):
+    result = []
+    common_denominator = lcm([i[1] for i in lst])
+    for i in lst:
+        result.append([i[0] * common_denominator//i[1], common_denominator])
+    return result
