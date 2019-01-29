@@ -1,0 +1,37 @@
+def next_bigger(n):
+    entry_list = []
+    left = []
+    right = []
+    result = []
+
+    for i in str(n):
+        entry_list.append(int(i))
+
+    for i in range(len(entry_list) - 1, 0, -1):
+        if entry_list[i - 1] < entry_list[i]:
+            pivon = entry_list[i - 1]
+            left = entry_list[:i - 1]
+            right = entry_list[i:]
+            break
+
+    try:
+        for i in sorted(right):
+            if pivon < i:
+                x = i
+                right.remove(x)
+                right.append(pivon)
+                break
+
+        for i in left:
+            result.append(str(i))
+        result.append(str(x))
+        for i in sorted(right):
+            result.append(str(i))
+
+    except UnboundLocalError:
+        return -1
+
+    if result[0] != "0":
+        return int("".join(result))
+    else:
+        return -1
