@@ -1,0 +1,23 @@
+def proper_fractions(n):
+    divisiors = []
+    k = n
+
+    if n == 1 or n == 2:
+        return n-1
+  
+    if pow(n-2, (n - 1), n) == 1:
+        return n - 1
+
+    i = 2
+    while (i <= k):
+        remainder = k % i
+        if remainder == 0:
+            divisiors.append(i)
+            k = k / i
+        else:
+            i += 1
+
+    totient = n
+    for i in set(divisiors):
+        totient *= (1 - 1/float(i))
+    return int(totient)
