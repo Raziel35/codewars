@@ -1,0 +1,14 @@
+def decompose(n):
+    x = 0
+    result = [n]
+
+    while result:
+        y = result.pop()
+        x += y ** 2
+        for i in range(y - 1, 0, -1):
+            if x - (i ** 2) >= 0:
+                x -= i ** 2
+                result.append(i)
+                if x == 0:
+                    result.sort()
+                    return result
